@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  padding: 15px;
+  margin: 0 auto;
+  width: 100%;
+}
+:root {
+  --primary-color: #0a97bb;
+  --bold-primary-color: #216f83;
+  --red-color: rgb(239, 58, 58);
+  --tin-red-color: rgba(243, 101, 101, 0.885);
+}
+body {
+  font-family: sans-serif;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* ------------ todo form start------------------ */
+.todoForm .container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+}
+.todoForm .container form {
+    padding: 20px;
+    border: solid 2px rgb(134, 134, 134);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.todoForm .container form .inputDiv {
+    display: flex;
+    align-items: center;
+    height: 35px;
+}
+.todoForm .container form .inputDiv > div {
+  height: 100%;
+  display: block;
+  padding: 10px;
+}
+.todoForm .container form .inputDiv > div {
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todoForm .container form .inputDiv > div i {
+    color: white;
+}
+.todoForm .container form .inputDiv input {
+    flex: 1;
+    padding: 6px;
+    border: solid 1px rgb(193, 191, 191);
+    height: 100%;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: transparent;
+    transition: 400ms;
+    outline: none;
+}
+.todoForm .container form .inputDiv input:focus {
+    border: solid 1px rgb(146, 146, 146);
+    box-shadow: 0 0 2px var(--bold-primary-color);
+}
+
+.todoForm .container form button {
+    padding: 8px;
+    background: var(--primary-color);
+    color: white;
+    outline: none;
+    border: none;
+}
+/* ------------ todo form end------------------ */
+
