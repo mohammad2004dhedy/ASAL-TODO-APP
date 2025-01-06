@@ -33,24 +33,28 @@ body {
   }
 }
 /* ------------ todo form start------------------ */
-.todoForm .container {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    text-align: center;
+.todoForm {
+  margin-bottom: 35px;
+}
+.todoForm .container,
+.todoList .container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
 }
 .todoForm .container form {
-    padding: 20px;
-    border: solid 2px rgb(134, 134, 134);
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  padding: 20px;
+  border: solid 2px rgb(134, 134, 134);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .todoForm .container form .inputDiv {
-    display: flex;
-    align-items: center;
-    height: 35px;
+  display: flex;
+  align-items: center;
+  height: 35px;
 }
 .todoForm .container form .inputDiv > div {
   height: 100%;
@@ -58,36 +62,120 @@ body {
   padding: 10px;
 }
 .todoForm .container form .inputDiv > div {
-    background: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .todoForm .container form .inputDiv > div i {
-    color: white;
+  color: white;
 }
 .todoForm .container form .inputDiv input {
-    flex: 1;
-    padding: 6px;
-    border: solid 1px rgb(193, 191, 191);
-    height: 100%;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    background: transparent;
-    transition: 400ms;
-    outline: none;
+  flex: 1;
+  padding: 6px;
+  border: solid 1px rgb(193, 191, 191);
+  height: 100%;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background: transparent;
+  transition: 400ms;
+  outline: none;
 }
 .todoForm .container form .inputDiv input:focus {
-    border: solid 1px rgb(146, 146, 146);
-    box-shadow: 0 0 2px var(--bold-primary-color);
+  border: solid 1px rgb(146, 146, 146);
+  box-shadow: 0 0 2px var(--bold-primary-color);
 }
-
+.todoForm .container form .Violations {
+  color: rgba(255, 0, 0, 0.674);
+  text-align: left;
+}
 .todoForm .container form button {
-    padding: 8px;
-    background: var(--primary-color);
-    color: white;
-    outline: none;
-    border: none;
+  padding: 8px;
+  background: var(--primary-color);
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 3px;
 }
 /* ------------ todo form end------------------ */
-
+.todoList {
+  height: 100vh;
+}
+.todoList .container .pagination,
+.todoList .container .DeleteActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  list-style: none;
+}
+.todoList .container .pagination li,
+.todoList .container .DeleteActions li {
+  background: var(--primary-color);
+  padding: 6px;
+  color: #fff;
+  flex-grow: 1;
+  transition: 400ms;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.todoList .container .pagination li {
+  position: relative;
+  top: 0;
+}
+.todoList .container .pagination li:hover {
+  background: var(--bold-primary-color);
+  box-shadow: 0 4px 14px var(--primary-color);
+  top: -3px;
+}
+.todoList .container .Tasks {
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: calc(80vh - 60.8px);
+}
+.todoList .container .Tasks::-webkit-scrollbar {
+  width: 3px;
+}
+.todoList .container .Tasks::-webkit-scrollbar-track {
+  background: #d9d9d9;
+}
+.todoList .container .Tasks::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  outline: none;
+}
+.todoList .container .Tasks .task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 10px;
+  border: solid 1px rgb(193, 191, 191);
+  box-shadow: 0 0 3px #cfcece;
+}
+.todoList .container .Tasks .task.done p {
+  text-decoration: line-through;
+  color: rgb(243, 89, 89);
+}
+.todoList .container .Tasks .task .actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.todoList .container .Tasks .task .actions i {
+  cursor: pointer;
+}
+.todoList .container .Tasks .task .actions .edit {
+  color: gold;
+}
+.todoList .container .Tasks .task .actions .remove {
+  color: red;
+}
+.todoList .container .DeleteActions li {
+  background: var(--red-color);
+}
+.todoList .container .DeleteActions li:hover {
+  background: var(--tin-red-color);
+}
