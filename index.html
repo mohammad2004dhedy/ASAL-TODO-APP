@@ -19,9 +19,8 @@
             </div>
             <input type="text" id="todoField" placeholder="new Todo" />
           </div>
-          <div class="Violations" id="violations">
-          </div>
-          <button type="button">Add New Todo</button>
+          <div class="Violations" id="violations"></div>
+          <button type="button" id="createNewTodo">Add New Todo</button>
         </form>
       </div>
     </section>
@@ -31,153 +30,25 @@
       <div class="container">
         <h2>Todo List</h2>
         <ul class="pagination">
-          <li>All</li>
-          <li>Done</li>
-          <li>Todo</li>
+          <li data-category="all" class="active">All</li>
+          <li data-category="done">Done</li>
+          <li data-category="todo">Todo</li>
         </ul>
-        <div class="Tasks" id="Tasks">
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task done">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task done">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task done">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task done">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task done">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-          <div class="task">
-            <p class="description">Lorem ipsum dolor sit amet consectetur.</p>
-            <div class="actions">
-              <input type="checkbox">
-              <i class="fa-solid fa-pencil edit"></i>
-              <i class="fa-solid fa-trash remove"></i>
-            </div>
-          </div>
-        </div>
+        <div class="Tasks" id="Tasks"></div>
         <ul class="DeleteActions">
-          <li>Delete Done Tasks</li>
-          <li>Delete All Tasks</li>
+          <li data-deleteType="DeleteDone">Delete Done Tasks</li>
+          <li data-deleteType="DeleteAll">Delete All Tasks</li>
         </ul>
       </div>
     </section>
     <div class="renameTask">
       <div class="popUp">
         <h2>Rename Task</h2>
-        <input type="text">
+        <input type="text" class="newTaskInput" />
+        <div class="Violations" id="violations"></div>
         <div class="actions">
-          <button type="button">Save</button>
-          <button type="button">Cancel</button>
+          <button type="button" class="saveBtn">Save</button>
+          <button type="button" class="cancelBtn">Cancel</button>
         </div>
       </div>
     </div>
@@ -186,8 +57,8 @@
         <h2>Delete Tasks</h2>
         <p>Are you sure you want to delete the selected tasks?</p>
         <div class="actions">
-          <button type="button">Confirm</button>
-          <button type="button">Cancel</button>
+          <button type="button" class="confirm">Confirm</button>
+          <button type="button" class="cancel">Cancel</button>
         </div>
       </div>
     </div>

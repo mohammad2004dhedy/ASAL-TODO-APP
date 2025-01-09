@@ -85,7 +85,8 @@ body {
   border: solid 1px rgb(146, 146, 146);
   box-shadow: 0 0 2px var(--bold-primary-color);
 }
-.todoForm .container form .Violations {
+
+.Violations {
   color: rgba(255, 0, 0, 0.674);
   text-align: left;
 }
@@ -96,6 +97,7 @@ body {
   outline: none;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 /* ------------ todo form end------------------ */
 .todoList {
@@ -123,7 +125,7 @@ body {
   position: relative;
   top: 0;
 }
-.todoList .container .pagination li:hover {
+.todoList .container .pagination li:hover ,.todoList .container .pagination li.active {
   background: var(--bold-primary-color);
   box-shadow: 0 4px 14px var(--primary-color);
   top: -3px;
@@ -239,6 +241,7 @@ body {
   outline: none;
   border-radius: 6px;
   border: none;
+  cursor: pointer;
 }
 .deleteAction .popUp .actions button:first-of-type{
     background: #d8d8d8;
