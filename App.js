@@ -1,3 +1,4 @@
+// create the function that handle the local storage(get and set)
 const setLocalStorage = (key, value) => {
   if (value) {
     localStorage.setItem(key, JSON.stringify(value));
@@ -5,14 +6,6 @@ const setLocalStorage = (key, value) => {
     return JSON.parse(localStorage.getItem(key)) || [];
   }
 };
-
-let todosArray = setLocalStorage("todos_array", null);
-
-// calling the dom elements
-let descriptionInput = document.getElementById("todoField");
-let createNewTodoBtn = document.getElementById("createNewTodo");
-let errorsContainer = document.querySelector("#violations");
-
 const showData = (todos) => {
   const TasksContainer = document.querySelector("#Tasks");
   TasksContainer.innerHTML = "";
@@ -32,7 +25,16 @@ const showData = (todos) => {
     TasksContainer.insertAdjacentHTML("beforeend", Task);
   });
 };
-//   validate description function
+// set the initial value for the todosArray from localStorage
+let todosArray = setLocalStorage("todos_array", null);
+
+// calling the basic dom elements
+let descriptionInput = document.getElementById("todoField");
+let createNewTodoBtn = document.getElementById("createNewTodo");
+let errorsContainer = document.querySelector("#violations");
+
+
+//  a function that validates todos and check for violations
 const validateTodo = (todo) => {
   let regex = /^[0-9]/;
   if (todo === "") {
@@ -44,6 +46,7 @@ const validateTodo = (todo) => {
   }
   return null;
 };
+// a function that called when click on a task to edit its description
 const renameTaskFun = (index) => {
   const renameTask = document.querySelector(".renameTask");
   const newTaskInput = renameTask.querySelector(".newTaskInput");
@@ -51,7 +54,7 @@ const renameTaskFun = (index) => {
   const saveBtn = renameTask.querySelector(".saveBtn");
   const cancelBtn = renameTask.querySelector(".cancelBtn");
   RenamTaskErrorsContainer.textContent = "";
-
+  
   const TargetTask = todosArray[index];
 
   newTaskInput.value = TargetTask.description;
@@ -73,6 +76,7 @@ const renameTaskFun = (index) => {
     }
   };
 };
+// a function that called when click on a task to rmove it
 const removeTask = (targetIndex) => {
   const deleteAction = document.querySelector(".deleteAction");
   const deleteActionH2 = deleteAction.querySelector("h2");
@@ -97,12 +101,14 @@ const removeTask = (targetIndex) => {
   };
 };
 
+// a function that called when click on a Task checkbox to mark it as done or not
 const setDone = (index) => {
   todosArray[index].isDone = !todosArray[index].isDone;
   showData(todosArray);
   setLocalStorage("todos_array", todosArray);
 };
 // handle events start --------------------------------
+// check for violations while entering a todo description
 descriptionInput.oninput = () => {
   let value = descriptionInput.value.trim();
   let error = validateTodo(value);
@@ -126,7 +132,9 @@ createNewTodoBtn.onclick = () => {
   }
 };
 // handle events end --------------------------------
+
 showData(todosArray); // call the function on load to show previouse data
+
 // ------ toggle between categories ----------------
 let categories = document.querySelectorAll(
   ".todoList .container .pagination li"
@@ -152,14 +160,15 @@ categories.forEach((cat) => {
   };
 });
 
+// handle the delete actions (delete all and done tasks)
 const deleteActions = document.querySelectorAll(
   ".todoList .container .DeleteActions li"
 );
-const deleteAction = document.querySelector(".deleteAction");
-const deleteActionH2 = deleteAction.querySelector("h2");
-const deleteActionP = deleteAction.querySelector("p");
-const confirmBtn = deleteAction.querySelector(".confirm");
-const cancelBtn = deleteAction.querySelector(".cancel");
+const deleteActionAlert = document.querySelector(".deleteAction");
+const deleteActionH2 = deleteActionAlert.querySelector("h2");
+const deleteActionP = deleteActionAlert.querySelector("p");
+const confirmBtn = deleteActionAlert.querySelector(".confirm");
+const cancelBtn = deleteActionAlert.querySelector(".cancel");
 const handleDeleteAction = (actionType) => {
   switch (actionType) {
     case "DeleteDone":
@@ -167,31 +176,26 @@ const handleDeleteAction = (actionType) => {
       deleteActionP.textContent =
         "Are you sure you want to delete completed tasks?";
       todosArray = todosArray.filter((todo) => !todo.isDone);
-
       break;
-
     case "DeleteAll":
       deleteActionH2.textContent = "Delete All Tasks";
       deleteActionP.textContent = "Are you sure you want to delete all tasks?";
       todosArray = [];
       break;
-
     default:
       console.error("Action does not exist :(");
       return;
   }
-
   setLocalStorage("todos_array", todosArray);
   showData(todosArray);
-  deleteAction.classList.remove("active");
+  deleteActionAlert.classList.remove("active");
 };
 deleteActions.forEach((action) => {
   action.addEventListener("click", () => {
     const deleteType = action.getAttribute("data-deleteType");
-    deleteAction.classList.add("active");
-
+    deleteActionAlert.classList.add("active");
     confirmBtn.onclick = () => handleDeleteAction(deleteType);
 
-    cancelBtn.onclick = () => deleteAction.classList.remove("active");
+    cancelBtn.onclick = () => deleteActionAlert.classList.remove("active");
   });
 });
