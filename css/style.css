@@ -125,7 +125,8 @@ body {
   position: relative;
   top: 0;
 }
-.todoList .container .pagination li:hover ,.todoList .container .pagination li.active {
+.todoList .container .pagination li:hover,
+.todoList .container .pagination li.active {
   background: var(--bold-primary-color);
   box-shadow: 0 4px 14px var(--primary-color);
   top: -3px;
@@ -178,6 +179,11 @@ body {
 .todoList .container .DeleteActions li {
   background: var(--red-color);
 }
+.todoList .container .DeleteActions li.disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events:none;
+}
 .todoList .container .DeleteActions li:hover {
   background: var(--tin-red-color);
 }
@@ -193,7 +199,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.renameTask.active,.deleteAction.active {
+.renameTask.active,
+.deleteAction.active {
   display: flex;
 }
 .renameTask .popUp,
@@ -205,7 +212,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  border-radius:8px;
+  border-radius: 8px;
 }
 .renameTask .popUp input {
   outline: none;
@@ -237,17 +244,17 @@ body {
 /* ------------------ rename task end ------------------ */
 /* --------------- delete action start -------------- */
 .deleteAction .popUp .actions button {
-  padding:7px 12px;
+  padding: 7px 12px;
   outline: none;
   border-radius: 6px;
   border: none;
   cursor: pointer;
 }
-.deleteAction .popUp .actions button:first-of-type{
-    background: #d8d8d8;
+.deleteAction .popUp .actions button:first-of-type {
+  background: #d8d8d8;
 }
-.deleteAction .popUp .actions button:nth-of-type(2){
-    background:var(--red-color);
-    color: white;
+.deleteAction .popUp .actions button:nth-of-type(2) {
+  background: var(--red-color);
+  color: white;
 }
 /* --------------- delete action end -------------- */

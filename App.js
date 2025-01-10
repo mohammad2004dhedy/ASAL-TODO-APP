@@ -7,6 +7,17 @@ const setLocalStorage = (key, value) => {
   }
 };
 const showData = (todos) => {
+  const deleteActions = document.querySelectorAll(
+    ".todoList .container .DeleteActions li"
+  );
+  deleteActions.forEach((action) => {
+    if (todosArray.length > 0) {
+      action.classList.remove("disabled");
+    }else{
+    action.classList.add("disabled");
+    }
+  });
+
   const TasksContainer = document.querySelector("#Tasks");
   TasksContainer.innerHTML = "";
   todos.forEach((todo, index) => {
@@ -33,7 +44,6 @@ let descriptionInput = document.getElementById("todoField");
 let createNewTodoBtn = document.getElementById("createNewTodo");
 let errorsContainer = document.querySelector("#violations");
 
-
 //  a function that validates todos and check for violations
 const validateTodo = (todo) => {
   let regex = /^[0-9]/;
@@ -54,7 +64,7 @@ const renameTaskFun = (index) => {
   const saveBtn = renameTask.querySelector(".saveBtn");
   const cancelBtn = renameTask.querySelector(".cancelBtn");
   RenamTaskErrorsContainer.textContent = "";
-  
+
   const TargetTask = todosArray[index];
 
   newTaskInput.value = TargetTask.description;
@@ -169,6 +179,7 @@ const deleteActionH2 = deleteActionAlert.querySelector("h2");
 const deleteActionP = deleteActionAlert.querySelector("p");
 const confirmBtn = deleteActionAlert.querySelector(".confirm");
 const cancelBtn = deleteActionAlert.querySelector(".cancel");
+
 const handleDeleteAction = (actionType) => {
   switch (actionType) {
     case "DeleteDone":
@@ -192,10 +203,11 @@ const handleDeleteAction = (actionType) => {
 };
 deleteActions.forEach((action) => {
   action.addEventListener("click", () => {
-    const deleteType = action.getAttribute("data-deleteType");
-    deleteActionAlert.classList.add("active");
-    confirmBtn.onclick = () => handleDeleteAction(deleteType);
 
-    cancelBtn.onclick = () => deleteActionAlert.classList.remove("active");
+      const deleteType = action.getAttribute("data-deleteType");
+      deleteActionAlert.classList.add("active");
+      confirmBtn.onclick = () => handleDeleteAction(deleteType);
+      cancelBtn.onclick = () => deleteActionAlert.classList.remove("active");
+  
   });
 });
