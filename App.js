@@ -13,11 +13,11 @@ const showData = (todos) => {
   deleteActions.forEach((action) => {
     if (todosArray.length > 0) {
       action.classList.remove("disabled");
-    }else{
-    action.classList.add("disabled");
+    } else {
+      action.classList.add("disabled");
     }
   });
-
+  
   const TasksContainer = document.querySelector("#Tasks");
   TasksContainer.innerHTML = "";
   todos.forEach((todo, index) => {
@@ -203,11 +203,9 @@ const handleDeleteAction = (actionType) => {
 };
 deleteActions.forEach((action) => {
   action.addEventListener("click", () => {
-
-      const deleteType = action.getAttribute("data-deleteType");
-      deleteActionAlert.classList.add("active");
-      confirmBtn.onclick = () => handleDeleteAction(deleteType);
-      cancelBtn.onclick = () => deleteActionAlert.classList.remove("active");
-  
+    const deleteType = action.getAttribute("data-deleteType");
+    deleteActionAlert.classList.add("active");
+    confirmBtn.onclick = () => handleDeleteAction(deleteType);
+    cancelBtn.onclick = () => deleteActionAlert.classList.remove("active");
   });
 });
